@@ -42,9 +42,9 @@ The completed app should enable the following user flow:
 2. The user is allowed to select one of the teams rendered in the previous step
 3. Upon selecting a team, the app uses the Weather API to display current weather info for the city where the team is located
 
-⚠️ How you achieve this flow is up to you. See the considerations below, and reach out for clarification on any details that will help to inform your strategy 
+⚠️ How you achieve this flow is up to you. See the considerations in the next section, and reach out for clarification on any details that will help to inform your strategy 
 
-⚠️ You will be asked to briefly demo your application and code via screenshare. Please confirm that you are able to run your app locally without issue.
+⚠️ You will be asked to briefly demo your application and code via screenshare. Please confirm that you are able to run your app locally without issue
 # Possible considerations
 
 Below are some factors that may be worth considering as you determine how best to implement a solution
