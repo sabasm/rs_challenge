@@ -1,8 +1,5 @@
 # RealSynch Developer Challenge
 
-api/v1/teams
-https://openweathermap.org/current#one
-
 As you work on this challenge, keep in mind that the goal is to demonstrate not just your knowledge as a developer, but your ability to write code that is conducive to collaboration with others. You are encouraged to ask any questions that will allow you to better achieve those goals.
 
 # Pre-installed Tech Stack

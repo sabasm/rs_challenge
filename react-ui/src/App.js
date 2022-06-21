@@ -13,7 +13,7 @@ function App() {
         <Button
           variant="contained"
           target="_blank"
-          href="https://github.com/ReWattInc/rs_challenge"
+          href="https://github.com/ReWattInc/rs_challenge/blob/main/README.md"
           size="large"
           sx={{ m: 2, bgcolor: "#00003C" }}
           disableElevation
