@@ -1,3 +1,5 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable @typescript-eslint/no-var-requires */
 const express = require("express");
 const path = require("path");
 const cluster = require("cluster");
