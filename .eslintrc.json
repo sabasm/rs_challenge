@@ -6,28 +6,50 @@
     "node": true
   },
   "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended",
     "airbnb",
+    "airbnb-typescript",
     "prettier",
-    "plugin:node/recommended"
+    "plugin:prettier/recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
+    "project": ["./tsconfig.json"],
     "ecmaFeatures": {
       "jsx": true
     },
     "ecmaVersion": "latest"
   },
-  "plugins": ["react", "@typescript-eslint/eslint-plugin", "prettier"],
+  "plugins": ["@typescript-eslint", "prettier", "import"],
   "rules": {
-    "prettier/prettier": "error",
+    "no-underscore-dangle": "warn",
     "no-unused-vars": "warn",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "prettier/prettier": "error",
     "no-console": "off",
-    "func-names": "off",
-    "no-process-exit": "off",
-    "object-shorthand": "off",
-    "class-methods-use-this": "off"
+    "no-plusplus": "off",
+    "no-await-in-loop": "off",
+    "max-classes-per-file": "off",
+    "radix": "off",
+    "import/no-unresolved": "error",
+    "class-methods-use-this": "warn",
+    "import/prefer-default-export": "off",
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
+    "no-restricted-syntax": [
+      "off",
+      {
+        "selector": "ForInStatement"
+      },
+      {
+        "selector": "ForOfStatement"
+      }
+    ]
   }
 }

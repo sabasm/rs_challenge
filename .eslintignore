@@ -1,0 +1,9 @@
+# Generated files
+react-ui/public/*
+
+# Build output
+react-ui/build/*
+
+# Node modules
+node_modules/*
+react-ui/node_modules/*

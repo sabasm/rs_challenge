@@ -1,9 +1,12 @@
-import React from "react";
 import { Button } from "@mui/material";
 import rsLogo from "./logo-with-name.png";
 import "./App.css";
 
-function App() {
+const CONTACT_EMAIL = "paul@realsynch.com";
+const README_URI =
+  "https://github.com/ReWattInc/rs_challenge/blob/main/README.md";
+
+export const App = () => {
   return (
     <div className="App">
       <header className="App-header">
@@ -13,7 +16,7 @@ function App() {
         <Button
           variant="contained"
           target="_blank"
-          href="https://github.com/ReWattInc/rs_challenge/blob/main/README.md"
+          href={README_URI}
           size="large"
           sx={{ m: 2, bgcolor: "#00003C" }}
           disableElevation
@@ -23,7 +26,7 @@ function App() {
         <Button
           variant="contained"
           target="_blank"
-          href="mailto:paul@realsynch.com?subject=RealSynch Developer Challenge"
+          href={`mailto:${CONTACT_EMAIL}?subject=RealSynch Developer Challenge`}
           size="large"
           sx={{ m: 2, bgcolor: "#00003C" }}
           disableElevation
@@ -33,6 +36,4 @@ function App() {
       </main>
     </div>
   );
-}
-
-export default App;
+};

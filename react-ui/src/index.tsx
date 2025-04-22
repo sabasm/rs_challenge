@@ -1,15 +1,14 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import CssBaseline from '@mui/material/CssBaseline';
+import CssBaseline from "@mui/material/CssBaseline";
 import * as serviceWorker from "./serviceWorker";
+import { createRoot } from "react-dom/client";
+import { App } from "./App";
+import "./index.css";
 
-ReactDOM.render(
+const root = createRoot(document.getElementById("root"));
+root.render(
   <CssBaseline>
     <App />
   </CssBaseline>,
-  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change
