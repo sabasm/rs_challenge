@@ -97,12 +97,9 @@ rs_challenge/
 | **Process environment & variable handling** | Single source of truth (`server/config/index.ts`) parsed at boot; front-end gets base path from `REACT_APP_API_BASE`, enabling proxy during local dev or absolute URLs in prod. |
 | **Developer experience** | `npm run dev` manages both stacks via **concurrently**; hot-reload thanks to **nodemon** and CRA. |
 
-## 4 — Testing & linting
+## 4 — Linting
 
 ```bash
-# run React tests
-npm test --prefix react-ui
-
 # run ESLint & Prettier check
 npm run format:check
 ```
