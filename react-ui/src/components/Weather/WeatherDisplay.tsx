@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect } from "react";
 import {
   Typography,
   Paper,
@@ -8,32 +8,32 @@ import {
   Card,
   CardContent,
   CardMedia
-} from "@mui/material"
-import { useAppDispatch, useAppSelector } from "../../redux/hooks"
-import { fetchWeatherByCity } from "../../redux/slices/weatherSlice"
+} from "@mui/material";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { fetchWeatherByCity } from "../../redux/slices/weatherSlice";
 
 const WeatherDisplay: React.FC = () => {
-  const dispatch = useAppDispatch()
-  const { selectedTeam } = useAppSelector((state) => state.nba)
-  const { cityWeather, loading, error } = useAppSelector((state) => state.weather)
+  const dispatch = useAppDispatch();
+  const { selectedTeam } = useAppSelector((state) => state.nba);
+  const { cityWeather, loading, error } = useAppSelector((state) => state.weather);
 
-  const cityKey = selectedTeam?.city.toLowerCase() || ""
-  const weatherData = cityKey ? cityWeather[cityKey]?.data : null
+  const cityKey = selectedTeam?.city.toLowerCase() || "";
+  const weatherData = cityKey ? cityWeather[cityKey]?.data : null;
 
   useEffect(() => {
     if (selectedTeam) {
-      dispatch(fetchWeatherByCity(selectedTeam.city))
+      dispatch(fetchWeatherByCity(selectedTeam.city));
     }
-  }, [selectedTeam, dispatch])
+  }, [selectedTeam, dispatch]);
 
-  if (!selectedTeam) return null
+  if (!selectedTeam) return null;
 
   if (loading && !weatherData) {
     return (
       <Box sx={{ display: "flex", justifyContent: "center", my: 4 }}>
         <CircularProgress />
       </Box>
-    )
+    );
   }
 
   if (error && !weatherData) {
@@ -44,10 +44,10 @@ const WeatherDisplay: React.FC = () => {
         </Typography>
         <Typography color="error">{error}</Typography>
       </Paper>
-    )
+    );
   }
 
-  if (!weatherData) return null
+  if (!weatherData) return null;
 
   return (
     <Paper elevation={3} sx={{ p: 2, mt: 3, maxWidth: 600, mx: "auto" }}>
@@ -71,9 +71,7 @@ const WeatherDisplay: React.FC = () => {
               <Typography variant="h6">
                 {weatherData.current.temp_c}°C / {weatherData.current.temp_f}°F
               </Typography>
-              <Typography variant="body1">
-                {weatherData.current.condition.text}
-              </Typography>
+              <Typography variant="body1">{weatherData.current.condition.text}</Typography>
             </Grid>
           </Grid>
         </CardContent>
@@ -89,9 +87,7 @@ const WeatherDisplay: React.FC = () => {
         </Grid>
       </Grid>
     </Paper>
-  )
-}
+  );
+};
 
-export default WeatherDisplay
-
-
+export default WeatherDisplay;

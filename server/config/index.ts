@@ -1,10 +1,10 @@
-import dotenv from "dotenv"
-dotenv.config()
+import dotenv from "dotenv";
+dotenv.config();
 
 const toNum = (v: string | undefined, def: number) => {
-  const n = parseInt(v || "", 10)
-  return Number.isNaN(n) ? def : n
-}
+  const n = parseInt(v || "", 10);
+  return Number.isNaN(n) ? def : n;
+};
 
 const CONFIG = {
   env: process.env.NODE_ENV || "development",
@@ -20,8 +20,6 @@ const CONFIG = {
     nba: 5 * 60 * 1000,
     weather: 5 * 60 * 1000
   }
-}
+};
 
-export default CONFIG
-
-
+export default CONFIG;

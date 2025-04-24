@@ -8,7 +8,7 @@ const root = createRoot(document.getElementById("root"));
 root.render(
   <CssBaseline>
     <App />
-  </CssBaseline>,
+  </CssBaseline>
 );
 
 serviceWorker.unregister();

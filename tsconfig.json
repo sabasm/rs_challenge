@@ -13,12 +13,5 @@
       "*": ["node_modules/*", "react-ui/node_modules/*"]
     }
   },
-  "exclude": [
-    "server/server",
-    "server/react-ui",
-    "react-ui/build",
-    "react-ui/public"
-  ]
+  "exclude": ["server/server", "server/react-ui", "react-ui/build", "react-ui/public"]
 }
-
-

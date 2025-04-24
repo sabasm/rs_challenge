@@ -1,43 +1,41 @@
-import express from "express"
-import dotenv from "dotenv"
-import apiRoutes from "./routes/api.routes"
-import { errorHandler } from "./middleware/errorHandler"
-import { logger } from "./utils/logger"
-import ApiService from "./services/api.service"
+import express from "express";
+import dotenv from "dotenv";
+import apiRoutes from "./routes/api.routes";
+import { errorHandler } from "./middleware/errorHandler";
+import { logger } from "./utils/logger";
+import ApiService from "./services/api.service";
 
-dotenv.config()
+dotenv.config();
 
-const PORT = process.env.PORT || 5000
-const app = express()
+const PORT = process.env.PORT || 5000;
+const app = express();
 
-app.use(express.json())
+app.use(express.json());
 
 app.use((req, res, next) => {
   logger.info(`${req.method} ${req.url}`, {
     query: req.query,
     body: req.method !== "GET" ? req.body : undefined,
     headers: { authorization: req.headers.authorization }
-  })
-  next()
-})
+  });
+  next();
+});
 
-app.use("/api", apiRoutes)
+app.use("/api", apiRoutes);
 
 app.get("/api", (req, res) => {
-  res.json({ message: "Hello from the custom server!" })
-})
+  res.json({ message: "Hello from the custom server!" });
+});
 
-app.use(errorHandler)
+app.use(errorHandler);
 
 app.use((req, res) => {
-  logger.warn(`${req.method} ${req.url} not found`)
+  logger.warn(`${req.method} ${req.url} not found`);
   res.status(404).json({
     error: { message: "Route not found", code: "NOT_FOUND", status: 404 }
-  })
-})
+  });
+});
 
 app.listen(PORT, async () => {
-  logger.info(`Server running on port ${PORT}`)
-})
-
-
+  logger.info(`Server running on port ${PORT}`);
+});

@@ -1,7 +1,11 @@
 import { Request, Response, NextFunction } from "express";
 import weatherService from "../services/weather.service";
 
-export const getWeatherByCity = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const getWeatherByCity = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
   try {
     const { city } = req.params;
     if (!city) {
@@ -17,5 +21,3 @@ export const getWeatherByCity = async (req: Request, res: Response, next: NextFu
     });
   }
 };
-
-

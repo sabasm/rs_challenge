@@ -58,11 +58,11 @@ const TeamList: React.FC = () => {
           {loading ? "Loading..." : "Show NBA Teams"}
         </Button>
       ) : loading ? (
-        <Box sx={{ display: 'flex', justifyContent: 'center', my: 4 }}>
+        <Box sx={{ display: "flex", justifyContent: "center", my: 4 }}>
           <CircularProgress />
         </Box>
       ) : (
-        <List sx={{ maxHeight: 400, overflow: 'auto', bgcolor: 'background.paper' }}>
+        <List sx={{ maxHeight: 400, overflow: "auto", bgcolor: "background.paper" }}>
           {teams.map((team) => (
             <ListItem key={team.id} disablePadding>
               <ListItemButton onClick={() => handleSelectTeam(team)}>
@@ -80,5 +80,3 @@ const TeamList: React.FC = () => {
 };
 
 export default TeamList;
-
-

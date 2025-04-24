@@ -1,20 +1,15 @@
-import { Request, Response, NextFunction } from 'express';
-import { logger } from '../utils/logger';
+import { Request, Response, NextFunction } from "express";
+import { logger } from "../utils/logger";
 
 interface AppError extends Error {
   status?: number;
   code?: string;
 }
 
-export const errorHandler = (
-  err: AppError,
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const errorHandler = (err: AppError, req: Request, res: Response, next: NextFunction) => {
   const status = err.status || 500;
-  const message = err.message || 'Internal Server Error';
-  const code = err.code || 'INTERNAL_SERVER_ERROR';
+  const message = err.message || "Internal Server Error";
+  const code = err.code || "INTERNAL_SERVER_ERROR";
 
   logger.error(`Error: ${message}`, {
     status,
@@ -32,5 +27,3 @@ export const errorHandler = (
     }
   });
 };
-
-

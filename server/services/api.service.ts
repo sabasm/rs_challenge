@@ -12,7 +12,7 @@ export class ApiService {
     this.instance = axios.create({
       baseURL,
       timeout: 10000,
-      ...config,
+      ...config
     });
 
     if (apiKey) {
@@ -26,10 +26,9 @@ export class ApiService {
     this.instance.interceptors.request.use(
       (config) => {
         const outboundAuth = (config.headers as any)["authorization"];
-        logger.info(
-          `API Request: ${config.method?.toUpperCase()} ${config.baseURL}${config.url}`,
-          { params: config.params }
-        );
+        logger.info(`API Request: ${config.method?.toUpperCase()} ${config.baseURL}${config.url}`, {
+          params: config.params
+        });
         return config;
       },
       (error) => {
@@ -79,4 +78,4 @@ export class ApiService {
   }
 }
 
-export default ApiService
+export default ApiService;

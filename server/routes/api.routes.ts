@@ -9,5 +9,3 @@ router.get("/nba/teams/:id", getNBATeamById);
 router.get("/weather/:city", getWeatherByCity);
 
 export default router;
-
-

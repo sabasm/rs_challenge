@@ -13,7 +13,11 @@ const apiService = new ApiService("https://api.balldontlie.io/v1", {
 });
 console.log("NBA API Key (first 8 chars):", apiKey.substring(0, 8) + "...");
 
-export const getNBATeams = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const getNBATeams = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
   try {
     const teams = await apiService.get("/teams");
     logger.info("Fetched NBA teams", teams);
@@ -24,7 +28,11 @@ export const getNBATeams = async (req: Request, res: Response, next: NextFunctio
   }
 };
 
-export const getNBATeamById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const getNBATeamById = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
   try {
     const teamId = req.params.id;
     if (!teamId || isNaN(Number(teamId))) {
@@ -61,7 +69,11 @@ export const getNBATeamById = async (req: Request, res: Response, next: NextFunc
     });
   } catch (err: any) {
     const status = err.status || 500;
-    if (err.response?.data && typeof err.response.data === "string" && err.response.data.includes("<!DOCTYPE html>")) {
+    if (
+      err.response?.data &&
+      typeof err.response.data === "string" &&
+      err.response.data.includes("<!DOCTYPE html>")
+    ) {
       res.status(502).json({
         error: {
           message: "Received unexpected HTML from external API",

@@ -7,8 +7,6 @@ const CONFIG = {
     nba: 5 * 60 * 1000,
     weather: 5 * 60 * 1000
   }
-}
+};
 
-export default CONFIG
-
-
+export default CONFIG;

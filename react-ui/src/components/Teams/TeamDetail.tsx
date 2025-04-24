@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Typography,
-  Paper,
-  Box,
-  Card,
-  CardContent,
-  Divider
-} from "@mui/material";
+import { Typography, Paper, Box, Card, CardContent, Divider } from "@mui/material";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 
@@ -25,7 +18,7 @@ const TeamDetail: React.FC = () => {
 
       <Card>
         <CardContent>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
+          <Box sx={{ display: "flex", justifyContent: "space-between", mb: 2 }}>
             <Typography variant="body1">
               <strong>City:</strong> {selectedTeam.city}
             </Typography>
@@ -36,7 +29,7 @@ const TeamDetail: React.FC = () => {
 
           <Divider sx={{ my: 1.5 }} />
 
-          <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
             <Typography variant="body1">
               <strong>Conference:</strong> {selectedTeam.conference}
             </Typography>
@@ -51,5 +44,3 @@ const TeamDetail: React.FC = () => {
 };
 
 export default TeamDetail;
-
-
