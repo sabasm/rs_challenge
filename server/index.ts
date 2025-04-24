@@ -1,50 +1,43 @@
-import express from "express";
-import path from "path";
-import cluster from "cluster";
+import express from "express"
+import dotenv from "dotenv"
+import apiRoutes from "./routes/api.routes"
+import { errorHandler } from "./middleware/errorHandler"
+import { logger } from "./utils/logger"
+import ApiService from "./services/api.service"
 
-const numCPUs = require("os").cpus().length;
+dotenv.config()
 
-const isDev = process.env.NODE_ENV !== "production";
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000
+const app = express()
 
-// Multi-process to utilize all CPU cores.
-if (!isDev && cluster.isMaster) {
-  console.error(`Node cluster master ${process.pid} is running`);
+app.use(express.json())
 
-  // Fork workers.
-  for (let i = 0; i < numCPUs; i += 1) {
-    cluster.fork();
-  }
+app.use((req, res, next) => {
+  logger.info(`${req.method} ${req.url}`, {
+    query: req.query,
+    body: req.method !== "GET" ? req.body : undefined,
+    headers: { authorization: req.headers.authorization }
+  })
+  next()
+})
 
-  cluster.on("exit", (worker, code, signal) => {
-    console.error(
-      `Node cluster worker ${worker.process.pid} exited: code ${code}, signal ${signal}`,
-    );
-  });
-} else {
-  const app = express();
+app.use("/api", apiRoutes)
 
-  // Priority serve any static files.
-  app.use(express.static(path.resolve(__dirname, "../react-ui/build")));
+app.get("/api", (req, res) => {
+  res.json({ message: "Hello from the custom server!" })
+})
 
-  // Answer API requests.
-  app.get("/api", (req, res) => {
-    res.set("Content-Type", "application/json");
-    res.send('{"message":"Hello from the custom server!"}');
-  });
+app.use(errorHandler)
 
-  // All remaining requests return the React app, so it can handle routing.
-  app.get("*", (request, response) => {
-    response.sendFile(
-      path.resolve(__dirname, "../react-ui/build", "index.html"),
-    );
-  });
+app.use((req, res) => {
+  logger.warn(`${req.method} ${req.url} not found`)
+  res.status(404).json({
+    error: { message: "Route not found", code: "NOT_FOUND", status: 404 }
+  })
+})
 
-  app.listen(PORT, () => {
-    console.error(
-      `Node ${
-        isDev ? "dev server" : `cluster worker ${process.pid}`
-      }: listening on port ${PORT}`,
-    );
-  });
-}
+app.listen(PORT, async () => {
+  logger.info(`Server running on port ${PORT}`)
+})
+
+

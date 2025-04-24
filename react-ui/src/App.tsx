@@ -1,39 +1,36 @@
-import { Button } from "@mui/material";
+import { Box, Container, CssBaseline, Typography } from "@mui/material";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
+import TeamList from "./components/Teams/TeamList";
+import WeatherDisplay from "./components/Weather/WeatherDisplay";
+import TeamDetail from "./components/Teams/TeamDetail";
 import rsLogo from "./logo-with-name.png";
 import "./App.css";
 
-const CONTACT_EMAIL = "paul@realsynch.com";
-const README_URI =
-  "https://github.com/ReWattInc/rs_challenge/blob/main/README.md";
-
 export const App = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={rsLogo} className="App-logo" alt="logo" />
-      </header>
-      <main>
-        <Button
-          variant="contained"
-          target="_blank"
-          href={README_URI}
-          size="large"
-          sx={{ m: 2, bgcolor: "#00003C" }}
-          disableElevation
-        >
-          Instructions
-        </Button>
-        <Button
-          variant="contained"
-          target="_blank"
-          href={`mailto:${CONTACT_EMAIL}?subject=RealSynch Developer Challenge`}
-          size="large"
-          sx={{ m: 2, bgcolor: "#00003C" }}
-          disableElevation
-        >
-          Ask a Question
-        </Button>
-      </main>
-    </div>
-  );
+ return (
+   <Provider store={store}>
+     <CssBaseline />
+     <div className="App">
+       <header className="App-header">
+         <img src={rsLogo} className="App-logo" alt="logo" />
+       </header>
+       <Container maxWidth="md">
+         <Box sx={{ mt: 4, mb: 8 }}>
+           <Typography variant="h4" component="h1" gutterBottom align="center">
+             NBA Teams & Weather App
+           </Typography>
+           <Typography variant="body1" align="center" sx={{ mb: 4 }}>
+             Select a team to see the current weather in their city
+           </Typography>
+           <TeamList />
+           <TeamDetail />
+           <WeatherDisplay />
+         </Box>
+       </Container>
+     </div>
+   </Provider>
+ );
 };
+
+
