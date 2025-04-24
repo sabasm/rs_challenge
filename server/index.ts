@@ -1,9 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
+import path from "path";
 import apiRoutes from "./routes/api.routes";
 import { errorHandler } from "./middleware/errorHandler";
 import { logger } from "./utils/logger";
-import ApiService from "./services/api.service";
 
 dotenv.config();
 
@@ -35,6 +35,14 @@ app.use((req, res) => {
     error: { message: "Route not found", code: "NOT_FOUND", status: 404 }
   });
 });
+
+if (process.env.NODE_ENV === "production") {
+  const buildPath = path.join(__dirname, "../react-ui/build");
+  app.use(express.static(buildPath));
+  app.get("*", (_req, res) => {
+    res.sendFile(path.join(buildPath, "index.html"));
+  });
+}
 
 app.listen(PORT, async () => {
   logger.info(`Server running on port ${PORT}`);
